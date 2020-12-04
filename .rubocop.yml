@@ -1,0 +1,22 @@
+inherit_gem:
+  rubocop-rootstrap:
+    - config/rails_edge.yml
+
+inherit_mode:
+  merge:
+    - Exclude
+
+Layout/LineLength:
+  Exclude:
+    - config/environments/*
+    - config/initializers/*
+
+Metrics/BlockLength:
+  Exclude:
+    - lib/tasks/auto_annotate_models.rake
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - bin/bundle
+    - bin/yarn
