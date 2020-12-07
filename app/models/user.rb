@@ -32,6 +32,8 @@ class User < ApplicationRecord
 
   after_create :assign_account
 
+  delegate :balance, to: :account, prefix: true
+
   def friends
     friends_a + friends_b
   end
