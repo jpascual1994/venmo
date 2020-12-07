@@ -36,3 +36,8 @@ en:
       errors:
         not_found: "Couldn't find the record"
         missing_param: 'A required param is missing'
+  models:
+    friendship:
+      errors:
+        self_friend: 'Users should be different each other'
+        already_exists: 'The Friendship already exists'
