@@ -25,10 +25,20 @@ class User < ApplicationRecord
   has_many :sent_payments, class_name: 'Payment', inverse_of: :sender, dependent: :destroy
   has_many :received_payments, class_name: 'Payment', inverse_of: :receiver, dependent: :destroy
 
+  has_one :account, dependent: :destroy
+
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :name, presence: true
 
+  after_create :assign_account
+
   def friends
     friends_a + friends_b
+  end
+
+  private
+
+  def assign_account
+    Account.create!(user: self)
   end
 end

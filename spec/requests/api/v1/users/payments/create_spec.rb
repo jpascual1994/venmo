@@ -7,7 +7,10 @@ describe 'POST /api/v1/users/:user_id/payments', type: :request do
   subject { post api_v1_user_payments_path(user), params: params }
 
   context 'when params are valid' do
-    let(:params) { { payment: attributes_for(:payment).merge(friend_id: friend.id) } }
+    let(:amount) { Faker::Number.between(from: 0.1, to: 999.99).round(2) }
+    let(:params) do
+      { payment: attributes_for(:payment, amount: amount).merge(friend_id: friend.id) }
+    end
 
     context 'when users are friends' do
       let!(:friendship) { create(:friendship, user_a: user, user_b: friend) }
@@ -19,6 +22,35 @@ describe 'POST /api/v1/users/:user_id/payments', type: :request do
 
       it 'creates a payment' do
         expect { subject }.to change(Payment, :count).by(1)
+      end
+
+      context 'when user has enough money' do
+        before do
+          user.account.update!(balance: amount)
+        end
+
+        it 'reduces user balance' do
+          expect { subject }.to change { user.account.reload.balance }.by(-amount)
+        end
+
+        it 'increase friend balance' do
+          expect { subject }.to change { friend.account.reload.balance }.by(amount)
+        end
+      end
+
+      context 'when user has not money' do
+        before do
+          user.account.update!(balance: 0)
+        end
+
+        it 'transfers money from bank account' do
+          expect_any_instance_of(MoneyTransferService).to receive(:transfer).with(amount)
+          subject
+        end
+
+        it 'increase friend balance' do
+          expect { subject }.to change { friend.account.reload.balance }.by(amount)
+        end
       end
     end
 

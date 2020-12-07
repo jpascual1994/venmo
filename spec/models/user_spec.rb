@@ -40,6 +40,8 @@ RSpec.describe User, type: :model do
                                                   .inverse_of(:receiver)
                                                   .dependent(:destroy)
     }
+
+    it { is_expected.to have_one(:account).dependent(:destroy) }
   end
 
   describe 'validations' do
