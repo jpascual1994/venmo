@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :friends_a, through: :friendships_as_a, source: :user_b
   has_many :friends_b, through: :friendships_as_b, source: :user_a
 
+  has_many :sent_payments, class_name: 'Payment', inverse_of: :sender, dependent: :destroy
+  has_many :received_payments, class_name: 'Payment', inverse_of: :receiver, dependent: :destroy
+
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :name, presence: true
 
