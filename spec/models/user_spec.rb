@@ -28,6 +28,18 @@ RSpec.describe User, type: :model do
 
     it { is_expected.to have_many(:friends_a).through(:friendships_as_a).source(:user_b) }
     it { is_expected.to have_many(:friends_b).through(:friendships_as_b).source(:user_a) }
+
+    it {
+      is_expected.to have_many(:sent_payments).class_name('Payment')
+                                              .inverse_of(:sender)
+                                              .dependent(:destroy)
+    }
+
+    it {
+      is_expected.to have_many(:received_payments).class_name('Payment')
+                                                  .inverse_of(:receiver)
+                                                  .dependent(:destroy)
+    }
   end
 
   describe 'validations' do

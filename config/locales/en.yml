@@ -41,3 +41,6 @@ en:
       errors:
         self_friend: 'Users should be different each other'
         already_exists: 'The Friendship already exists'
+  errors:
+    payments:
+      not_friends: 'Payments are only allowed between friends'
