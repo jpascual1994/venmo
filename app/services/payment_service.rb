@@ -17,6 +17,10 @@ class PaymentService
     end
   end
 
+  def feed_payments
+    Payment.made_by(user.friends.pluck(:id))
+  end
+
   private
 
   def friend

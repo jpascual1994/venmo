@@ -22,4 +22,12 @@ class Payment < ApplicationRecord
 
   validates :amount, presence: true, numericality: { greater_than: 0, less_than: MAX_PAYMENT }
   validates :description, presence: true
+
+  scope :by_date, -> { order(created_at: :desc) }
+  scope :made_by, lambda { |user_ids|
+    where(sender_id: user_ids).or(where(receiver_id: user_ids))
+  }
+
+  delegate :name, to: :receiver, prefix: true
+  delegate :name, to: :sender, prefix: true
 end
