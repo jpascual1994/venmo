@@ -21,5 +21,6 @@ FactoryBot.define do
     receiver factory: :user
     amount { Faker::Number.within(range: 1..1_000).to_f }
     description { Faker::Lorem.sentence }
+    created_at { Faker::Date.backward }
   end
 end
