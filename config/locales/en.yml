@@ -31,3 +31,19 @@
 
 en:
   hello: "Hello world"
+  api:
+    v1:
+      errors:
+        not_found: "Couldn't find the record"
+        missing_param: 'A required param is missing'
+  models:
+    friendship:
+      errors:
+        self_friend: 'Users should be different each other'
+        already_exists: 'The Friendship already exists'
+    payment:
+      presenter:
+        feed_title: '%{sender} paid %{receiver} on %{date} - %{description}'
+  errors:
+    payments:
+      not_friends: 'Payments are only allowed between friends'

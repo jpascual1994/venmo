@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "00535539-6123-4761-8522-fe3c16e5a498",
+		"name": "Venmo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create payments",
+			"item": [
+				{
+					"name": "Create Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"payment\": {\n        \"friend_id\": 2,\n        \"amount\": 150,\n        \"description\": \"Gift\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/payments",
+							"protocol": "https",
+							"host": [
+								"jp-venmo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":user_id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Empty payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"payment\": {\n        \"friend_id\": 2,\n        \"amount\": 0,\n        \"description\": \"Test\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/payments",
+							"protocol": "https",
+							"host": [
+								"jp-venmo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":user_id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Big amount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"payment\": {\n        \"friend_id\": 2,\n        \"amount\": 1500,\n        \"description\": \"Test\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/payments",
+							"protocol": "https",
+							"host": [
+								"jp-venmo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":user_id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Not friends",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"payment\": {\n        \"friend_id\": 6,\n        \"amount\": 100,\n        \"description\": \"Test\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/payments",
+							"protocol": "https",
+							"host": [
+								"jp-venmo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":user_id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"payment\": {\n        \"friend_id\": 2,\n        \"amount\": 10,\n        \"description\": \"Test\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/payments",
+							"protocol": "https",
+							"host": [
+								"jp-venmo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":user_id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Friend",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"payment\": {\n        \"friend_id\": 100,\n        \"amount\": 10,\n        \"description\": \"Test\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/payments",
+							"protocol": "https",
+							"host": [
+								"jp-venmo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":user_id",
+								"payments"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User Feed",
+			"item": [
+				{
+					"name": "Feed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/feed",
+							"protocol": "https",
+							"host": [
+								"jp-venmo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":user_id",
+								"feed"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "With page number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/feed",
+							"protocol": "https",
+							"host": [
+								"jp-venmo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":user_id",
+								"feed"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": {\n        \"name\": \"Test\",\n        \"email\": \"test@example.com\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jp-venmo.herokuapp.com/api/v1/users",
+					"protocol": "https",
+					"host": [
+						"jp-venmo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id",
+					"protocol": "https",
+					"host": [
+						"jp-venmo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						":user_id"
+					],
+					"variable": [
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jp-venmo.herokuapp.com/api/v1/users/:user_id/balance",
+					"protocol": "https",
+					"host": [
+						"jp-venmo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						":user_id",
+						"balance"
+					],
+					"variable": [
+						{
+							"key": "user_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
