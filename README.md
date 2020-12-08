@@ -7,7 +7,7 @@ The solution is also hosted on Heroku with the following URL: https://jp-venmo.h
 ## Database 
 
 The database architecture is represented on the next Entity Relationship Diagram:
-![database](doc/erd.pdf)
+![database](doc/erd.png)
 
 ### Friendships
 How to connect users was the most crucial decision I had to make since the system is based on the relationship between them.
